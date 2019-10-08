@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}   
+
+<div class="w3-container1"> 
+
+    <form action="{% url 'search_results' %}" method="get">
+            <input name="q" type="text" placeholder="Search...">
+    </form><br><br><br>
+    <h1>List of Clients</h1>
+
+    <table id=table1 border=1>
+            <tr>
+            <th width="200">Name</th>
+            <th width="200"></th>
+            <th width="200"></th>
+            </tr>
+            
+            {% for client in clients %}
+            <tr>
+            <td>{{ client.client_name }}</td>
+            <td><a href="{% url 'update_client' client.id %}"><button class="button">Edit Profile</button></a>
+            </td>
+            <td><a href="{% url 'get_client_profile' client.id %}"><button class="button">Profile</button></a>
+            </td>
+            </tr>
+            {% endfor %}
+            </table>
+</div>
+{% endblock %}
+   

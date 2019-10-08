@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+       
+<h1 id="prof">Your Profile</h1>
+
+<div class="w3-container">
+    <div class="profile">
+    <p><b>Client Name:</b> {{ prof.client_name }} </p>
+    <p><b>Email:</b> {{ prof.email }} </p>
+    <p><b>Contact Name:</b> {{ prof.contact_name }} </p>
+    <p><b>Address:</b>
+ {{ prof.street_name }}, {{ prof.suburb }}
+    </p>
+    <p><b>State:</b> {{ prof.state }} </p>
+    <p><b>Post Code:</b> {{ prof.postcode }} </p>
+  
+    <p><b>Phone No:</b> {{ prof.phone_no }} </p>
+
+
+    <a href="{% url 'update_client' prof.id %}"><button class="button">Edit Profile</button></a>
+
+</div>
+</div>
+{% endblock %}  
+   

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Client Profile</h2>
+<div class="edit">
+       
+        <form method="post">
+                {% csrf_token %}
+                {{ client_form.as_p }}
+                <button type="submit" class="button1">Update</button>
+        </form>
+</div>
+{% endblock %}
