@@ -2,7 +2,8 @@
 {% block content %}  
 <div class="w3-container1"> 
 
-<form action="{% url 'search_results' %}" method="get">
+<form action="{% url 'get_clients' %}" method="POST">
+        {% csrf_token %}
         <input name="q" type="text" placeholder="Search...">
 </form><br><br>
 <h1>Search Results</h1>
@@ -10,13 +11,27 @@
 <table id=table1 border=1>
         <tr>
         <th width="200">Name</th>
+        <th width="200">Email</th>
+        <th width="200">Contact Name</th>
+        <th width="200">Street Name</th>
+        <th width="200">Suburb</th>
+        <th width="200">Postcode</th>
+        <th width="200">State</th>
+        <th width="200">Phone NO</th>
         <th width="200"></th>
         <th width="200"></th>
         </tr>
         
-        {% for client in object_list %}
+        {% for client in clients %}
         <tr>
         <td>{{ client.client_name }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.contact_name }}</td>
+        <td>{{ client.street_name }}</td>
+        <td>{{ client.suburb }}</td>
+        <td>{{ client.postcode }}</td>
+        <td>{{ client.state }}</td>
+        <td>{{ client.phone_no }}</td>
         <td><a href="{% url 'update_client' client.id %}"><button class="button">Edit Profile</button></a>
         </td>
         <td><a href="{% url 'get_client_profile' client.id %}"><button class="button">Profile</button></a>

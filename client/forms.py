@@ -7,11 +7,11 @@ from django.conf import settings
 class ClientForm(forms.ModelForm):
     client_name = forms.CharField(max_length=60,required=True)
     email = forms.EmailField(max_length=100,required=True)
-    contact_name = forms.CharField(max_length=60)
-    street_name=forms.CharField()
-    suburb=forms.CharField()
-    postcode=forms.CharField(max_length=10)
-    state=forms.CharField(max_length=200)
+    contact_name = forms.CharField(max_length=60,required=False)
+    street_name=forms.CharField(required=False)
+    suburb=forms.CharField(required=False)
+    postcode=forms.CharField(max_length=10,required=False)
+    state=forms.CharField(max_length=200,required=False)
     phone_no = forms.CharField( max_length=10,required=True) 
 
    
@@ -39,11 +39,11 @@ class ClientForm(forms.ModelForm):
 class UpdateProfile(forms.ModelForm):
     client_name = forms.CharField(max_length=60,required=True)
     email = forms.EmailField(max_length=100,required=True)
-    contact_name = forms.CharField(max_length=60)
-    street_name=forms.CharField()
-    suburb=forms.CharField()
-    postcode=forms.CharField(max_length=10)
-    state=forms.CharField(max_length=200)
+    contact_name = forms.CharField(max_length=60,required=False)
+    street_name=forms.CharField(required=False)
+    suburb=forms.CharField(required=False)
+    postcode=forms.CharField(max_length=10,required=False)
+    state=forms.CharField(max_length=200,required=False)
     phone_no = forms.CharField( max_length=10,required=True) 
 
    

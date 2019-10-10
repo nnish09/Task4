@@ -3,21 +3,29 @@
 
 <div class="w3-container1"> 
 
-    <form action="{% url 'search_results' %}" method="get">
-            <input name="q" type="text" placeholder="Search...">
+    <form action="{% url 'search' %}" method="GET">
+        {% csrf_token %}
+        <input name="q" type="text" value = "{{ request.GET.q }}" placeholder="Search...">
     </form><br><br><br>
     <h1>List of Clients</h1>
 
     <table id=table1 border=1>
-            <tr>
-            <th width="200">Name</th>
-            <th width="200"></th>
-            <th width="200"></th>
-            </tr>
+        <tr>
+        <th width="200"><a href="?order_by=client_name&direction={{ direction }}">Name</a></th>
+        <th width="200"><a href="?order_by=email&direction={{ direction }}">Email</a></th>  
+        <th width="200"><a href="?order_by=suburb&direction={{ direction }}">Suburb</a></th>      
+        <th width="200"><a href="?order_by=phone_no&direction={{ direction }}">Phone NO</a></th>
+        <th width="200"></th>
+        <th width="200"></th>
+        </tr>
             
-            {% for client in clients %}
+            {% for client in object_list %}
             <tr>
             <td>{{ client.client_name }}</td>
+            <td>{{ client.email }}</td>         
+            <td>{{ client.suburb }}</td>
+            <td>{{ client.phone_no }}</td>
+
             <td><a href="{% url 'update_client' client.id %}"><button class="button">Edit Profile</button></a>
             </td>
             <td><a href="{% url 'get_client_profile' client.id %}"><button class="button">Profile</button></a>
@@ -26,5 +34,7 @@
             {% endfor %}
             </table>
 </div>
+
+
 {% endblock %}
    
